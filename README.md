@@ -68,12 +68,14 @@ top: true                         # 可选，置顶
 
 ## 三、发布是怎么跑的
 
-`发布博客.bat` 做了三件事：
+`发布博客.bat` 做了四件事：
 
-1. `hexo clean && hexo generate` —— 把 Markdown 生成到 `public/`；
-2. `node tools/deploy-gh-pages.js` —— 逐文件调用 GitHub API，提交到 `gh-pages` 分支；
-3. `gh api ... /pages/builds` —— 让 GitHub Pages 重新构建。
+1. `git add -A` + commit，并把源码上传到 `main`（有改动才做）；
+2. `hexo clean && hexo generate` —— 把 Markdown 生成到 `public/`；
+3. `node tools/deploy-gh-pages.js` —— 逐文件调用 GitHub API，提交到 `gh-pages` 分支；
+4. `gh api ... /pages/builds` —— 让 GitHub Pages 重新构建。
 
+所以「commit」这件事已经包在双击里了，不用自己敲 git 命令。
 之所以不用 `git push`：这台机器连不上 `github.com:443`（`api.github.com` 是通的），
 所以上传走 REST API。**前提是 `gh` 还处于登录状态**，用 `gh auth status` 可以检查。
 
