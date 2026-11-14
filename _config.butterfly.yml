@@ -1,4 +1,4 @@
-﻿# --------------------------------------
+# --------------------------------------
 # Hexo Butterfly Theme Configuration
 # If you have any questions, please refer to the documentation
 # Chinese: https://butterfly.js.org/
@@ -62,7 +62,7 @@ social:
 favicon: /img/favicon.svg
 
 avatar:
-  img: /img/avatar.svg
+  img: /img/avatar-taiga.jpg
   effect: false
 
 # Disable all banner images

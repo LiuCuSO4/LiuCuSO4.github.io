@@ -54,6 +54,25 @@ function listFiles() {
   const files = listFiles();
   console.log('files:', files.length);
 
+  // 防呆：远端有、本地没有的文件，这次提交会把它们删掉。先列出来让人确认。
+  try {
+    const remote = await api('GET', `/repos/${REPO}/git/trees/${BRANCH}?recursive=1`);
+    const remoteFiles = remote.tree.filter((t) => t.type === 'blob').map((t) => t.path);
+    const localSet = new Set(files.map((p) => p.split(path.sep).join('/')));
+    const missing = remoteFiles.filter((p) => !localSet.has(p) && p !== '.github/workflows/pages.yml');
+    if (missing.length) {
+      if (process.env.CONFIRM_PRUNE !== '1') {
+        console.error('\n[!] 远端有 ' + missing.length + ' 个文件，本地没有；继续提交会把它们删掉：');
+        missing.slice(0, 20).forEach((p) => console.error('    - ' + p));
+        console.error('\n先把这些文件同步到本地，或确认要删除后加 CONFIRM_PRUNE=1 重新运行。\n');
+        process.exit(1);
+      }
+      console.log('prune:', missing.length, '个远端文件将被删除');
+    }
+  } catch (e) {
+    if (e.status !== 404) throw e;
+  }
+
   // 1. 上传 blob
   const tree = [];
   let done = 0;
