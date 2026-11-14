@@ -1,74 +1,139 @@
 # 硫酸铜的博客
 
-基于 **Hexo 8 + Butterfly 5** 的个人博客，部署在 GitHub Pages：<https://liucuso4.github.io>
+在线地址：**https://liucuso4.github.io/**
 
-## 写一篇新文章
+Hexo 8 + Butterfly 5.7 主题，托管在 GitHub Pages（免费、永久、自带 HTTPS）。
+本地这份是「源文件」，`public/` 是生成出来的成品，成品发布在仓库的 `gh-pages` 分支。
 
-在 `source/_posts/` 新建一个 `.md` 文件：
-
-```markdown
----
-title: 文章标题
-date: 2026-11-14 20:00:00
-tags:
-  - 随笔
-categories:
-  - 生活
-cover: /img/cover-1.svg
 ---
 
-正文用 Markdown 写。
+## 一、日常写作
+
+### 方式 A：本地写（推荐）
+
+1. 双击 **`写文章.bat`**，输入标题，回车；
+2. 在 `source/_posts/` 下打开新生成的 `.md` 文件写正文；
+3. 双击 **`发布博客.bat`**，等脚本跑完（约 30 秒），浏览器会自动打开线上地址。
+
+### 方式 B：直接在 GitHub 网页上改
+
+打开 https://github.com/LiuCuSO4/LiuCuSO4.github.io/tree/main/source/_posts ，
+点文件 → 右上角铅笔 → 改完 Commit。
+
+⚠️ 网页上改完**不会自动上线**（这个仓库暂时没有跑 GitHub Actions），
+需要回到电脑上双击一次 `发布博客.bat`。想彻底自动化见文末「进阶」。
+
+### 文章开头的参数
+
+```yaml
+---
+title: 标题
+date: 2026-11-14 12:00:00
+updated: 2026-11-14 12:00:00     # 可选，不写就用最后修改时间
+categories: 技术                  # 一个
+tags: [Hexo, 教程]                # 多个
+cover: /img/cover-3.svg           # 列表卡片封面
+top_img: /img/hero-3.svg          # 文章页顶部大图
+top: true                         # 可选，置顶
+---
 ```
 
-保存后本地预览：
+`cover` 和 `top_img` 不写也行，会走主题的默认图。
 
-```bash
-npm install          # 第一次
-npx hexo server      # http://localhost:4000
-```
+---
 
-## 发布
+## 二、改外观
 
-```bash
-双击 发布.bat
-```
+主配置在 **`_config.butterfly.yml`**（有中文注释，改完重新发布即可）。
 
-它会构建站点并把 `public/` 推到 `gh-pages` 分支，一两分钟后 <https://liucuso4.github.io> 更新。
-
-> 之所以不用 GitHub Actions：当前网络下 `github.com:443` 的 git 推送被阻断，本机通过 GitHub API 发布。等以后方便了，可以在仓库里加 `.github/workflows/pages.yml`（文件已备好），把 Pages 的 Source 改成 “GitHub Actions”，就能做到 push 即发布。
-
-## 改外观 / 改配置
-
-| 想改什么 | 改哪里 |
+| 想改什么 | 找哪一项 |
 | --- | --- |
-| 站点名、副标题、作者、网址 | `_config.yml` |
-| 导航菜单、头像、Banner、社交链接、公告、目录、深色模式 | `_config.butterfly.yml` |
-| 自定义 CSS（相册网格、灯箱、播放器、正文排版） | `source/css/custom.css` |
-| 自定义 JS（相册灯箱） | `source/js/custom.js` |
-| 关于页 | `source/about/index.md` |
-| 相册 | `source/gallery/index.md` + `source/img/` |
-| 音乐播放列表 | `source/music/index.md` |
-| 友链 | `source/_data/link.yml` |
-| 留言 / 评论 | `source/comments/index.md` |
+| 站点名 / 副标题 / 头像 | `_config.yml` 的 `title`、`subtitle`；`avatar` |
+| 顶部导航菜单 | `menu:`（名称 + 路径 + 图标） |
+| 社交图标（GitHub / B站 / 邮箱） | `social:` |
+| 首页大图、各页头图 | `index_img`、`default_top_img`、`archive_img` 等 |
+| 文章默认封面 | `default_cover:`（现在轮换 6 张） |
+| 主题色 | `theme_color:`（默认 `#49b1f5`） |
+| 首页副标题打字效果 | `subtitle:` |
+| 公告栏 | `card_announcement:` |
+| 页脚年份 / 备案号 | `footer:` |
+| 目录、代码高亮、深色模式 | `toc:`、`highlight_theme:`、`darkmode:` |
 
-## 目录
+图片都放在 **`source/img/`**，换图最省事的办法：
+把自己的图片丢进去，然后把配置里的 `/img/xxx.svg` 改成新文件名。
+
+配色想大改就编辑 `source/css/custom.css`，它最后加载，能覆盖主题默认样式。
+
+---
+
+## 三、发布是怎么跑的
+
+`发布博客.bat` 做了三件事：
+
+1. `hexo clean && hexo generate` —— 把 Markdown 生成到 `public/`；
+2. `node tools/deploy-gh-pages.js` —— 逐文件调用 GitHub API，提交到 `gh-pages` 分支；
+3. `gh api ... /pages/builds` —— 让 GitHub Pages 重新构建。
+
+之所以不用 `git push`：这台机器连不上 `github.com:443`（`api.github.com` 是通的），
+所以上传走 REST API。**前提是 `gh` 还处于登录状态**，用 `gh auth status` 可以检查。
+
+---
+
+## 四、评论与留言
+
+- 现在的留言板是 GitHub Discussions：https://github.com/LiuCuSO4/LiuCuSO4.github.io/discussions
+- 想换成**文章内嵌评论**（giscus），只需两步：
+  1. 打开 https://github.com/apps/giscus 安装到本仓库；
+  2. 把 `_config.butterfly.yml` 里 `comments.use:` 改成 `use: Giscus`，重新发布。
+
+  giscus 的 `repo / repo_id / category_id` 已经填好了，不用再申请。
+
+---
+
+## 五、换自己的域名（可选）
+
+1. 在 `source/` 下新建文件 `CNAME`，内容一行：`blog.example.com`；
+2. 域名 DNS 加一条 CNAME 记录指向 `liucuso4.github.io`；
+3. 重新发布，然后在仓库 Settings → Pages 里填 Custom domain 并勾选 Enforce HTTPS。
+
+---
+
+## 六、目录说明
 
 ```
-source/_posts/     文章（Markdown）
-source/img/        SVG 图片素材
-source/css/        custom.css + APlayer
-source/js/         custom.js + APlayer
-themes/            主题从 npm 安装（hexo-theme-butterfly）
-tools/             本地工具（发布、截图、修 front-matter）
-public/            构建产物（不提交）
+_config.yml              站点配置（标题、网址、分页）
+_config.butterfly.yml    主题配置（菜单、配色、侧栏、评论）
+source/_posts/           文章（Markdown）
+source/_data/link.yml    友链
+source/about|comments|gallery|music|link|tags|categories/   固定页面
+source/img/              站内图片（SVG 封面、头像、Banner）
+source/css/custom.css    自定义样式
+source/js/custom.js      相册灯箱
+tools/deploy-gh-pages.js 发布脚本
+tools/upload.js          上传源文件到 main 分支
+发布博客.bat / 写文章.bat  双击即用
+public/                  生成结果（不用手改）
 ```
 
-## 本地工具
+---
 
-- `tools/deploy-gh-pages.js` — 把 `public/` 发布到 `gh-pages` 分支（走 GitHub API）
-- `tools/upload.js` — 把源码提交到 `main`（同上，用于网络受限时）
-- `tools/fix-frontmatter.js` — 修文章头的换行问题
+## 七、进阶
 
-## 备份
+- **提交时自动部署**：给 `gh` 补 `workflow` 权限（`gh auth refresh -s workflow`），
+  然后把 `.github/workflows/pages.yml` 推到 `main`，并在 Settings → Pages 把 Source 改成
+  「GitHub Actions」。之后在网页上改文章就会自动上线，`发布博客.bat` 也可以退休了。
+- **网页版后台**：仓库里的 `.pages.yml` 是 [Pages CMS](https://app.pagescms.org/) 的配置，
+  装上它的 GitHub App 后可以在浏览器里可视化写文章（标题、标签、封面、正文都有表单）。
+- **备份**：整个文件夹复制走就是完整备份；线上成品在 `gh-pages` 分支。
 
-文章和配置都在仓库里，GitHub 本身就是备份；本地再留一份这个文件夹即可。
+---
+
+## 八、常见问题
+
+**改了没生效？** 浏览器缓存 → Ctrl+F5；或者确认 `发布博客.bat` 三步都成功了。
+
+**发布报 401/403？** `gh auth status` 看登录是否过期，重新 `gh auth login`。
+
+**中文乱码？** 确保 `.md` 文件是 UTF-8 编码。
+
+**想换回之前那个带后台的动态博客？** 同目录下的 `../my-blog` 还在，双击 `启动博客.bat` 即可。

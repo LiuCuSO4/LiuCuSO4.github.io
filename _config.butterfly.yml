@@ -306,7 +306,7 @@ aside:
       link: https://github.com/LiuCuSO4
   card_announcement:
     enable: true
-    content: 欢迎来到我的小站 👋 这里记录学习笔记、折腾过程和偶尔的胡思乱想。评论已开放，随便坐。
+    content: 欢迎来到我的小站 👋 这里记录学习笔记、折腾过程和偶尔的胡思乱想。留言板在 GitHub Discussions，登录就能发言。
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -565,7 +565,7 @@ comments:
   # If you set it to true, the comment count will be invalid
   lazyload: false
   # Display comment count in post's top_img
-  count: false
+  count: true
   # Display comment count in Home Page
   card_post_count: false
 
@@ -655,13 +655,18 @@ twikoo:
 # Giscus
 # https://giscus.app/
 giscus:
-  repo:
-  repo_id:
-  category_id:
+  repo: LiuCuSO4/LiuCuSO4.github.io
+  repo_id: R_kgDOVt8cSw
+  category_id: DIC_kwDOVt8cS84DLGdx
   light_theme: light
   dark_theme: dark
   js:
   option:
+    mapping: pathname
+    lang: zh-CN
+    reactionsEnabled: 1
+    inputPosition: top
+    strict: 0
 
 # Remark42
 # https://remark42.com/docs/configuration/frontend/
