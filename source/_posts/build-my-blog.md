@@ -18,8 +18,8 @@ top_img: /img/hero-2.svg
 
 - **Hexo**：把 Markdown 编译成静态 HTML，跑完就不用管了；
 - **Butterfly**：负责好看——全屏 banner、卡片列表、悬浮目录、明暗主题；
-- **GitHub Pages**：免费托管，地址是 `https://liucusO4.github.io`，不用买服务器，也不用备案；
-- **GitHub Actions**：每次提交，自动重新构建并发布，不用在本地敲命令。
+- **GitHub Pages**：免费托管，地址是 `https://liucuso4.github.io`，不用买服务器，也不用备案；
+- **一键脚本**：本地双击「发布博客.bat」，生成、上传、触发重建一条龙，半分钟上线。
 
 整套东西一年花销是 0 元。
 
@@ -48,23 +48,23 @@ top_img: /img/hero-2.svg
 
 ## 写作的三条路
 
-**一、浏览器里写（推荐）**
+**一、本地写（推荐）**
 
-仓库根目录有一个 `.pages.yml`，用 [Pages CMS](https://app.pagescms.org/) 登录 GitHub 后选中这个仓库，就能在网页表单里新建文章、填标签、传封面，点保存即提交。GitHub Actions 会自动发布，几十秒后线上就更新了。
+双击 `写文章.bat`，输入标题；在 `source/_posts/` 里写完正文，再双击 `发布博客.bat`。
 
-**二、GitHub 网页上改**
+发布脚本做三件事：`hexo generate` 生成 HTML → 用 GitHub API 把 `public/` 推到 `gh-pages` 分支 → 触发 Pages 重建。这台机器连不上 `github.com:443`（`api.github.com` 能通），所以走 API 而不是 `git push`。
 
-打开 `source/_posts/`，点任意 `.md` 文件右上角的铅笔图标就能编辑。适合改错别字。
+**二、浏览器里写**
 
-**三、本地写**
+仓库根目录有 `.pages.yml`，用 [Pages CMS](https://app.pagescms.org/) 选中仓库，就能在网页表单里新建文章、填标签、传封面。保存只是提交到 `main`，**还要回电脑双击一次发布脚本**——纯静态站没有服务端，Markdown 不会自己变成网页。
 
-```bash
-npm install          # 第一次
-npx hexo new "文章标题"   # 生成 source/_posts/文章标题.md
-npx hexo server      # 本地预览 http://localhost:4000
-```
+**三、GitHub 网页上改**
 
-写完 `git push`，剩下的交给 Actions。
+打开 `source/_posts/`，点铅笔图标就能改。适合修错别字，改完同样要发布一次。
+
+{% note info %}
+想连这一步也省掉：给 `gh` 补 workflow 权限（`gh auth refresh -s workflow`），把 `.github/workflows/pages.yml` 推上 `main`，再把 Pages 的 Source 改成 GitHub Actions。之后每次提交都会自动上线。
+{% endnote %}
 
 {% note tip %}
 文章开头的 `---` 之间是 front-matter：`title` 标题、`date` 日期、`tags` 标签、`categories` 分类、`cover` 封面、`top: true` 置顶。少写一项也不会报错。
