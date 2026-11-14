@@ -14,8 +14,8 @@ if errorlevel 1 (
 )
 
 echo.
-echo 已创建。接下来：
-echo   1. 在打开的 Markdown 文件里写正文（文件在 source\_posts\ 下）
-echo   2. 双击「发布博客.bat」即可上线
+echo 已创建：source\_posts\%title%.md
+start "" "source\_posts\%title%.md"
+echo 用记事本写完正文、保存，再双击「发布博客.bat」即可上线。
 echo.
 pause
