@@ -44,6 +44,9 @@ if errorlevel 1 (
   exit /b 1
 )
 
+rem hexo 跑完可能把控制台代码页重置，重新声明一次，免得后面的中文变乱码
+chcp 65001 >nul
+
 echo.
 echo ========================================
 echo   3/4  上传成品到 gh-pages 分支
