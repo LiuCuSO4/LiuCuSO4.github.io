@@ -322,3 +322,8 @@ figure.highlight,
 .guestbook-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(73, 177, 245, .36); }
 
 [data-theme="dark"] .guestbook-card { background: linear-gradient(135deg, rgba(73,177,245,.16), rgba(255,124,156,.14)); }
+
+/* 目录右上角的阅读百分比在 Butterfly 5.7.2 会飘出卡片，隐藏掉 */
+#card-toc .toc-percentage {
+  display: none;
+}

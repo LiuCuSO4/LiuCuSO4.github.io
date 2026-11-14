@@ -1,3 +1,4 @@
+https://liucuso4.github.io/chunhua-club/
 https://liucuso4.github.io/markdown-guide/
 https://liucuso4.github.io/build-my-blog/
 https://liucuso4.github.io/about/
@@ -13,4 +14,8 @@ https://liucuso4.github.io/tags/Markdown/
 https://liucuso4.github.io/tags/%E5%86%99%E4%BD%9C/
 https://liucuso4.github.io/tags/Hexo/
 https://liucuso4.github.io/tags/%E5%BB%BA%E7%AB%99/
+https://liucuso4.github.io/tags/%E7%A4%BE%E5%9B%A2/
+https://liucuso4.github.io/tags/%E5%85%AC%E5%91%8A/
+https://liucuso4.github.io/tags/bilibili/
 https://liucuso4.github.io/categories/%E6%8A%80%E6%9C%AF/
+https://liucuso4.github.io/categories/%E7%A4%BE%E5%9B%A2/
