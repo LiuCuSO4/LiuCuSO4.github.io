@@ -1,4 +1,4 @@
-# --------------------------------------
+﻿# --------------------------------------
 # Hexo Butterfly Theme Configuration
 # If you have any questions, please refer to the documentation
 # Chinese: https://butterfly.js.org/
@@ -176,9 +176,7 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - 把学到的东西，慢慢写下来
-    - 记录折腾、阅读与生活
-    - 保持好奇，慢慢来
+    - Always Continue,Never Break.
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -298,7 +296,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: 把学到的东西，慢慢写下来
+    description: 世事诡随，谨致良知
     button:
       enable: true
       icon: fab fa-github
@@ -306,7 +304,7 @@ aside:
       link: https://github.com/LiuCuSO4
   card_announcement:
     enable: true
-    content: 欢迎来到我的小站 👋 这里记录学习笔记、折腾过程和偶尔的胡思乱想。留言板在 GitHub Discussions，登录就能发言。
+    content: 欢迎来到 👋 这里记录学习笔记。留言板在 GitHub Discussions，登录就能压力我。
   card_recent_post:
     enable: true
     # If set 0 will show all

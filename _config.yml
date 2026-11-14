@@ -2,10 +2,10 @@
 ## Docs: https://hexo.io/docs/configuration.html
 
 # Site
-title: 硫酸铜的博客
-subtitle: '把学到的东西，慢慢写下来'
-description: '硫酸铜的个人博客，记录技术笔记、读书心得与生活碎片。'
-keywords: 个人博客,技术笔记,读书,硫酸铜
+title: Liu_CuSO4的blog
+subtitle: '绝对不是蓝铜'
+description: '硫酸铜的个人博客，记录技术笔记与生活碎片。'
+keywords: 个人博客,技术笔记
 author: 硫酸铜
 language: zh-CN
 timezone: 'Asia/Shanghai'
