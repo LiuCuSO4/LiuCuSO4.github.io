@@ -62,7 +62,7 @@ social:
 favicon: /img/favicon.svg
 
 avatar:
-  img: /img/Aisaka Taiga.jpg
+  img: /img/avatar.svg
   effect: false
 
 # Disable all banner images
@@ -134,7 +134,7 @@ post_meta:
     # Choose: date / relative
     date_format: date
     categories: true
-标签: false
+    tags: false
     label: true
   post:
     # Choose: left / center
@@ -144,7 +144,7 @@ post_meta:
     # Choose: date / relative
     date_format: date
     categories: true
-标签: true
+    tags: true
     label: true
 
 # --------------------------------------
@@ -176,7 +176,9 @@ subtitle:
   source: false
   # If you close the typewriter effect, the subtitle will only show the first line of sub
   sub:
-    - Always Continue,Never Break.
+    - 把学到的东西，慢慢写下来
+    - 记录折腾、阅读与生活
+    - 保持好奇，慢慢来
 
 # Article layout on the homepage
 # 1: Cover on the left, info on the right
@@ -296,7 +298,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description: Always Continue,Never Break.
+    description: 把学到的东西，慢慢写下来
     button:
       enable: true
       icon: fab fa-github
@@ -304,7 +306,7 @@ aside:
       link: https://github.com/LiuCuSO4
   card_announcement:
     enable: true
-    content: 欢迎来到我的小站 👋。
+    content: 欢迎来到我的小站 👋 这里记录学习笔记、折腾过程和偶尔的胡思乱想。留言板在 GitHub Discussions，登录就能发言。
   card_recent_post:
     enable: true
     # If set 0 will show all
@@ -482,7 +484,7 @@ math:
     # Enable the contextual menu
     enableMenu: true
     # Choose: all / ams / none, This controls whether equations are numbered and how
-标签: none
+    tags: none
 
   katex:
     # Enable the copy KaTeX formula

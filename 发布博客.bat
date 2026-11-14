@@ -10,8 +10,30 @@ if errorlevel 1 (
   exit /b 1
 )
 
+rem 用系统证书库，避免个别机器上 Node 报 UNABLE_TO_VERIFY_LEAF_SIGNATURE
+set "NODE_OPTIONS=--use-system-ca"
+
 echo ========================================
-echo   1/3  生成静态页面
+echo   1/4  把源码提交到 main 分支
+echo ========================================
+git add -A
+git diff --cached --quiet
+if errorlevel 1 (
+  git -c core.quotepath=false commit -m "update: %date% %time%" >nul
+  node tools\upload.js "update: %date% %time%"
+  if errorlevel 1 (
+    echo.
+    echo [失败] 源码上传出错。先确认 gh 还登录着：gh auth status
+    pause
+    exit /b 1
+  )
+) else (
+  echo   源码没有变化，跳过这一步。
+)
+
+echo.
+echo ========================================
+echo   2/4  生成静态页面
 echo ========================================
 call npx hexo clean
 call npx hexo generate
@@ -24,7 +46,7 @@ if errorlevel 1 (
 
 echo.
 echo ========================================
-echo   2/3  上传到 GitHub（gh-pages 分支）
+echo   3/4  上传成品到 gh-pages 分支
 echo ========================================
 node tools\deploy-gh-pages.js "update: %date% %time%"
 if errorlevel 1 (
@@ -36,7 +58,7 @@ if errorlevel 1 (
 
 echo.
 echo ========================================
-echo   3/3  通知 GitHub Pages 重新构建
+echo   4/4  通知 GitHub Pages 重新构建
 echo ========================================
 gh api --method POST repos/LiuCuSO4/LiuCuSO4.github.io/pages/builds >nul 2>nul
 
