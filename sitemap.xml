@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://liucuso4.github.io/build-my-blog/</loc>
-    
-    <lastmod>2026-11-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://liucuso4.github.io/markdown-guide/</loc>
     
     <lastmod>2026-11-14</lastmod>
@@ -20,34 +11,7 @@
   </url>
   
   <url>
-    <loc>https://liucuso4.github.io/about/</loc>
-    
-    <lastmod>2026-11-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://liucuso4.github.io/comments/</loc>
-    
-    <lastmod>2026-11-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://liucuso4.github.io/link/</loc>
-    
-    <lastmod>2026-11-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://liucuso4.github.io/tags/</loc>
+    <loc>https://liucuso4.github.io/build-my-blog/</loc>
     
     <lastmod>2026-11-14</lastmod>
     
@@ -57,6 +21,15 @@
   
   <url>
     <loc>https://liucuso4.github.io/music/</loc>
+    
+    <lastmod>2026-11-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liucuso4.github.io/about/</loc>
     
     <lastmod>2026-11-14</lastmod>
     
@@ -75,6 +48,33 @@
   
   <url>
     <loc>https://liucuso4.github.io/categories/</loc>
+    
+    <lastmod>2026-11-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liucuso4.github.io/tags/</loc>
+    
+    <lastmod>2026-11-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liucuso4.github.io/link/</loc>
+    
+    <lastmod>2026-11-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://liucuso4.github.io/comments/</loc>
     
     <lastmod>2026-11-14</lastmod>
     
@@ -117,20 +117,6 @@
   </url>
   
   <url>
-    <loc>https://liucuso4.github.io/tags/Hexo/</loc>
-    <lastmod>2026-11-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://liucuso4.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
-    <lastmod>2026-11-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://liucuso4.github.io/tags/Markdown/</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -139,6 +125,20 @@
   
   <url>
     <loc>https://liucuso4.github.io/tags/%E5%86%99%E4%BD%9C/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liucuso4.github.io/tags/Hexo/</loc>
+    <lastmod>2026-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liucuso4.github.io/tags/%E5%BB%BA%E7%AB%99/</loc>
     <lastmod>2026-11-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
