@@ -12,7 +12,7 @@ timezone: 'Asia/Shanghai'
 
 # URL
 ## GitHub Pages 用户站：https://<用户名>.github.io
-url: https://liucusO4.github.io
+url: https://liucuso4.github.io
 permalink: :title/
 pretty_urls:
   trailing_index: false
