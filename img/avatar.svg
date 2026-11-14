@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img">
+<defs>
+<linearGradient id="av" x1="0.933" y1="0.250" x2="0.067" y2="0.750"><stop offset="0%" stop-color="#49b1f5"/><stop offset="50%" stop-color="#6d7bff"/><stop offset="100%" stop-color="#c86dd7"/></linearGradient>
+<radialGradient id="shine" cx="30%" cy="24%" r="70%">
+  <stop offset="0%" stop-color="#fff" stop-opacity=".45"/>
+  <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="240" height="240" rx="120" fill="url(#av)"/>
+<rect width="240" height="240" rx="120" fill="url(#shine)"/>
+<text x="120" y="132" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="700" fill="#ffffff" letter-spacing="-2">Cu</text>
+<text x="120" y="170" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="600" fill="#ffffff" opacity=".72" letter-spacing="4">SO4</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" role="img">
+<defs><linearGradient id="hx" x1="0.933" y1="0.250" x2="0.067" y2="0.750"><stop offset="0%" stop-color="#0e83cd"/><stop offset="100%" stop-color="#49b1f5"/></linearGradient></defs>
+<rect width="120" height="120" rx="26" fill="#1b2a3a"/>
+<path d="M60 20 L96 41 L96 79 L60 100 L24 79 L24 41 Z" fill="none" stroke="url(#hx)" stroke-width="6"/>
+<text x="60" y="70" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="url(#hx)">H</text>
+</svg>
