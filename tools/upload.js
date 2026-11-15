@@ -41,11 +41,7 @@ async function api(method, url, body) {
 
 function listFiles() {
   const out = execFileSync('git', ['ls-files', '-z'], { cwd: ROOT, encoding: 'utf8' });
-  return out
-    .split('\0')
-    .filter(Boolean)
-    // token 没有 workflow 权限，带 .github/workflows/ 会被 GitHub 判 404
-    .filter((p) => !p.replace(/\\/g, '/').startsWith('.github/workflows/'));
+  return out.split('\0').filter(Boolean);
 }
 
 (async () => {
@@ -59,7 +55,7 @@ function listFiles() {
     const remote = await api('GET', `/repos/${REPO}/git/trees/${BRANCH}?recursive=1`);
     const remoteFiles = remote.tree.filter((t) => t.type === 'blob').map((t) => t.path);
     const localSet = new Set(files.map((p) => p.split(path.sep).join('/')));
-    const missing = remoteFiles.filter((p) => !localSet.has(p) && p !== '.github/workflows/pages.yml');
+    const missing = remoteFiles.filter((p) => !localSet.has(p));
     if (missing.length) {
       if (process.env.CONFIRM_PRUNE !== '1') {
         console.error('\n[!] 远端有 ' + missing.length + ' 个文件，本地没有；继续提交会把它们删掉：');
