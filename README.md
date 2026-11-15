@@ -18,10 +18,10 @@ Hexo 8 + Butterfly 5.7 主题，托管在 GitHub Pages（免费、永久、自�
 ### 方式 B：直接在 GitHub 网页上改
 
 打开 https://github.com/LiuCuSO4/LiuCuSO4.github.io/tree/main/source/_posts ，
-点文件 → 右上角铅笔 → 改完 Commit。
+点文件 → 右上角铅笔 → 改完 Commit changes。想加新文章就点 **Add file → Create new file**，
+路径写 `source/_posts/英文或中文文件名.md`。
 
-⚠️ 网页上改完**不会自动上线**（这个仓库暂时没有跑 GitHub Actions），
-需要回到电脑上双击一次 `发布博客.bat`。想彻底自动化见文末「进阶」。
+提交后 GitHub Actions 会自动构建发布，约 1 分钟上线，不用回电脑上跑脚本。
 
 ### 文章开头的参数
 
@@ -68,16 +68,22 @@ top: true                         # 可选，置顶
 
 ## 三、发布是怎么跑的
 
-`发布博客.bat` 做了四件事：
+现在走 **GitHub Actions**：`main` 一有新提交，GitHub 就在云端 `npm ci` + `hexo generate`，
+再把成品发布到 Pages。
 
-1. `git add -A` + commit，并把源码上传到 `main`（有改动才做）；
-2. `hexo clean && hexo generate` —— 把 Markdown 生成到 `public/`；
-3. `node tools/deploy-gh-pages.js` —— 逐文件调用 GitHub API，提交到 `gh-pages` 分支；
-4. `gh api ... /pages/builds` —— 让 GitHub Pages 重新构建。
+`发布博客.bat` 只做三件事：
 
-所以「commit」这件事已经包在双击里了，不用自己敲 git 命令。
-之所以不用 `git push`：这台机器连不上 `github.com:443`（`api.github.com` 是通的），
-所以上传走 REST API。**前提是 `gh` 还处于登录状态**，用 `gh auth status` 可以检查。
+1. `git add -A` + commit（有改动才做）；
+2. `node tools/upload.js` —— 逐文件调用 GitHub API，把源码推到 `main`；
+3. 等 Actions 构建完成（通常 40–90 秒），浏览器打开线上地址。
+
+「commit / 构建 / 上线」都不用自己敲命令。之所以不用 `git push`：这台机器连不上
+`github.com:443`（`api.github.com` 是通的），所以上传走 REST API。
+
+**前提**：`gh` 处于登录状态（`gh auth status` 检查，权限里要有 `workflow`），
+且仓库 Settings → Pages 的 Source 是 **GitHub Actions**。这两项都已经配好了。
+
+网页上直接改文件也会触发同一套流程，所以在哪里写都行。
 
 ---
 
@@ -121,18 +127,18 @@ public/                  生成结果（不用手改）
 
 ## 七、进阶
 
-- **提交时自动部署**：给 `gh` 补 `workflow` 权限（`gh auth refresh -s workflow`），
-  然后把 `.github/workflows/pages.yml` 推到 `main`，并在 Settings → Pages 把 Source 改成
-  「GitHub Actions」。之后在网页上改文章就会自动上线，`发布博客.bat` 也可以退休了。
+- **自动部署已经开好**：`.github/workflows/pages.yml` 在 `main` 有新提交时构建并发布，
+  Pages 的 Source 也已切到「GitHub Actions」。网页上改文章 → 提交 → 一分钟后就上线。
 - **网页版后台**：仓库里的 `.pages.yml` 是 [Pages CMS](https://app.pagescms.org/) 的配置，
   装上它的 GitHub App 后可以在浏览器里可视化写文章（标题、标签、封面、正文都有表单）。
-- **备份**：整个文件夹复制走就是完整备份；线上成品在 `gh-pages` 分支。
+- **备份**：整个文件夹复制走就是完整备份；线上成品在 Actions 的 artifact 里，
+  旧的 `gh-pages` 分支是切换前留下的，可以不管。
 
 ---
 
 ## 八、常见问题
 
-**改了没生效？** 浏览器缓存 → Ctrl+F5；或者确认 `发布博客.bat` 三步都成功了。
+**改了没生效？** 浏览器缓存 → Ctrl+F5；或者去仓库 Actions 页面看最近一次构建是不是绿的。
 
 **发布报 401/403？** `gh auth status` 看登录是否过期，重新 `gh auth login`。
 
