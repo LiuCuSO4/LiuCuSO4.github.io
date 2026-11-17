@@ -12,7 +12,6 @@ comments: false
   </div>
   <div id="aplayer" class="music-player"></div>
 </div>
-
 <script src="/js/APlayer.min.js"></script>
 <script>
   var ap = new APlayer({
