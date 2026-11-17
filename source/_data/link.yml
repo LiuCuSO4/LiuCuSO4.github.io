@@ -8,7 +8,7 @@
     - name: Butterfly
       link: https://butterfly.js.org/
       avatar: /img/friend-butterfly.svg
-      descr: 好看、能折腾的主题
+      descr: 好看的主题
     - name: GitHub
       link: https://github.com/LiuCuSO4
       avatar: /img/logo.svg
@@ -16,16 +16,16 @@
     - name: 哔哩哔哩
       link: https://space.bilibili.com/456641466
       avatar: /img/avatar.svg
-      descr: 偶尔发点视频
+      descr: 关注我！
 
 - class_name: 朋友们
   class_desc: 想换友链的话，去留言板说一声
   link_list:
-    - name: 示例友人 A
-      link: https://example.com/
-      avatar: /img/gallery-2.svg
-      descr: 一个也喜欢折腾的人
-    - name: 示例友人 B
-      link: https://example.org/
-      avatar: /img/gallery-4.svg
-      descr: 拍照很好看
+    #- name: 示例友人 A
+    #  link: https://example.com/
+    #  avatar: /img/gallery-2.svg
+    #  descr: 一个也喜欢折腾的人
+    # - name: 示例友人 B
+    #  link: https://example.org/
+    #  avatar: /img/gallery-4.svg
+    #  descr: 拍照很好看
