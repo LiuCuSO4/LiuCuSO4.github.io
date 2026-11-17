@@ -1,10 +1,3 @@
-﻿---
-title: 音乐
-date: 2026-11-14 12:00:00
-top_img: /img/banner.svg
-comments: false
----
-
 <div class="music-wrap">
   <div class="music-intro">
     <h2>倾听世界</h2>
@@ -14,17 +7,17 @@ comments: false
 </div>
 <script src="/js/APlayer.min.js"></script>
 <script>
-  var ap = new APlayer({
-    container: document.getElementById('aplayer'),
-    theme: '#49b1f5',
-    loop: 'all',
-    order: 'list',
-    preload: 'none',
-    volume: 0.7,
-    listFolded: false,
-    listMaxHeight: '260px',
-    audio: [
-      { name: 'Summer', artist: '久石让', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: '/img/gallery-3.svg' }
-    ]
-  });
+var ap = new APlayer({
+  container: document.getElementById('aplayer'),
+  theme: '#49b1f5',
+  loop: 'all',
+  order: 'list',
+  preload: 'none',
+  volume: 0.7,
+  listFolded: false,
+  listMaxHeight: '260px',
+  audio: [
+    { name: 'Summer', artist: '久石让', url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', cover: '/img/gallery-3.svg' }
+  ]
+});
 </script>
